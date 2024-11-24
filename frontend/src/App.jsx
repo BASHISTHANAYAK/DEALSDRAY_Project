@@ -1,11 +1,11 @@
 import "./App.css";
 import AdminProvider from "./contextApi/createProvider";
-import HomePage from "./pages/HomePage/Home";
+import RouteComp from "./routes/Routes";
 
 function App() {
   return (
     <AdminProvider>
-      <HomePage />
+      <RouteComp />
     </AdminProvider>
   );
 }

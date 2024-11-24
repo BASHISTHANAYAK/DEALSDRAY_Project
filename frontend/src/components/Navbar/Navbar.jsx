@@ -4,7 +4,9 @@ import adminContext from "../../contextApi/createContext";
 const Navbar = () => {
   const { adminDetails } = useContext(adminContext);
   console.log("adminDetails-", adminDetails);
-  return <nav>nav</nav>;
+  return <nav>
+    
+  </nav>;
 };
 
 export default Navbar;

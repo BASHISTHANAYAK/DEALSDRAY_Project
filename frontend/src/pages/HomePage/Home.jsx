@@ -5,7 +5,6 @@ const Home = () => {
     <div>
       <Navbar />
       HomePage
-
     </div>
   );
 };
