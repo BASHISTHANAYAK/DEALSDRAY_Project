@@ -5,11 +5,12 @@ const bcrypt = require("bcrypt");
 exports.registerAdmin = async (req, res) => {
   try {
     const { username, password } = req.body;
+    console.log("login -", { username, password });
     const admin = new Admin({ username, password });
     await admin.save();
     res.status(201).json({ message: "Admin registered successfully" });
   } catch (error) {
-    res.status(500).json({ message: "Error registering admin", error });
+    res.status(500).json({ message: "Error registering admin enter all fields", error });
   }
 };
 
