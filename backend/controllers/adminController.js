@@ -5,22 +5,47 @@ const bcrypt = require("bcrypt");
 exports.registerAdmin = async (req, res) => {
   try {
     const { username, password } = req.body;
-    console.log("login -", { username, password });
+
+    // Check if username or password is empty or just spaces
+    if (
+      !username ||
+      !password ||
+      username.trim() === "" ||
+      password.trim() === ""
+    ) {
+      return res.status(400).json({ message: "Please fill in all details" });
+    }
+
+    console.log("registering admin -", { username, password });
+
     const admin = new Admin({ username, password });
     await admin.save();
+
     res.status(201).json({ message: "Admin registered successfully" });
   } catch (error) {
-    res.status(500).json({ message: "Error registering admin enter all fields", error });
+    res
+      .status(500)
+      .json({ message: "Error registering admin, please try again", error });
   }
 };
 
 // for admin login
-
 exports.loginAdmin = async (req, res) => {
   try {
     const { username, password } = req.body;
+
+    // Check if username or password is empty or just spaces
+    if (
+      !username ||
+      !password ||
+      username.trim() === "" ||
+      password.trim() === ""
+    ) {
+      return res.status(400).json({ message: "Please fill in all details" });
+    }
+
     console.log("login -", { username, password });
-    
+
     const admin = await Admin.findOne({ username });
     if (!admin) return res.status(401).json({ message: "Invalid credentials" });
 
