@@ -61,7 +61,7 @@ exports.loginAdmin = async (req, res) => {
       secure: true,
       maxAge: 3600000,
     });
-    res.status(200).json({ message: "Login successful" });
+    res.status(200).json({ message: "Login successful", token: token });
   } catch (error) {
     res.status(500).json({ message: "Error logging in", error });
   }
